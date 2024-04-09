@@ -17,7 +17,7 @@ const Singup = () => {
       .then((result) => {
         console.log(result.user);
         e.target.reset();
-        navigate("");
+        navigate("/");
       })
       .catch((error) => {
         console.error(error.message);

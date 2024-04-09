@@ -16,7 +16,7 @@ const AllCatagoris = () => {
         <h1 className="font-extrabold text-5xl mx-auto items-center text-center mb-3 ">
           Explore Good Places
         </h1>
-        <p className="mx-auto items-center text-center max-w-3xl">
+        <p className="mx-auto items-center text-center max-w-3xl font-semibold text-slate-600 mt-5">
           At vero eos et accusamus et iusto odio dignissimos ducimus qui
           blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
         </p>

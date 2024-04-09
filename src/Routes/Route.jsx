@@ -8,6 +8,8 @@ import Reservations from "../Navber/Privats/Reservations";
 import PrivateRoute from "../Navber/Privats/PrivateRoute";
 import Profile from "../Navber/Profile";
 import CatagoriDetils from "../Component/CatagoriDetils";
+import Contact from "../Navber/Contact";
+import About from "../Navber/About";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +20,14 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/contact",
+        element: <Contact></Contact>,
+      },
+      {
+        path: "/about",
+        element: <About></About>,
       },
       {
         path: "/signin",

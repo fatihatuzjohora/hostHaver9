@@ -20,10 +20,15 @@ const Navber = () => {
 
   //------------------------
   const links = (
-    <div className="text-3xl font-semibold">
+    <div className="text-xl font-semibold mt-5">
       <NavLink className="mr-5" to="/">
-        {" "}
         Home
+      </NavLink>
+      <NavLink className="mr-5" to="/contact">
+        Contact Us
+      </NavLink>
+      <NavLink className="mr-5" to="/about">
+        About Us
       </NavLink>
       {/* <NavLink className="mr-5" to="/signin">
         Singin
@@ -44,7 +49,7 @@ const Navber = () => {
       )}
     </div>
   );
-
+console.log(user);
   return (
     <div>
       <div className="navbar bg-base-100">
@@ -73,7 +78,7 @@ const Navber = () => {
               {links}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">HostHaven</a>
+          <a className=" text-3xl font-bold">HostHaven</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
@@ -88,10 +93,10 @@ const Navber = () => {
                 className="btn mr-2 btn-ghost btn-circle avatar"
               >
                 <div className="w-10 rounded-full">
-                  <img alt="logo" src={user.image} />
+                  <img alt="logo" src={user.photoURL} />
                 </div>
               </div>
-              <a onClick={handleLogOut} className="btn">
+              <a onClick={handleLogOut} className="btn text-2xl font-semibold">
                 Sign Out
               </a>
             </>
@@ -107,7 +112,7 @@ const Navber = () => {
                 </div>
               </div>
               <Link to="/signin">
-                <button className="btn">Sign In</button>
+                <button className="btn text-2xl font-semibold">Sign In</button>
               </Link>
             </>
           )}
