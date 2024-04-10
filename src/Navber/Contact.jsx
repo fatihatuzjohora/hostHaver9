@@ -31,7 +31,7 @@ const Contact = () => {
 			</div>
 		</div>
 		
-	<form noValidate="" className="container w-full max-w-xl p-8 mx-auto space-y-6 rounded-md shadow dark:bg-gray-50">
+	<form  noValidate="" className="container w-full max-w-xl p-8 mx-auto space-y-6 rounded-md shadow dark:bg-gray-50">
 		<h2 className="w-full text-3xl font-bold leading-tight">Contact us</h2>
 		<div>
 			<label htmlFor="name" className="block mb-1 ml-1">Name</label>

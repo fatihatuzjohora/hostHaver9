@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { FiEye } from "react-icons/fi";
 import { GoEyeClosed } from "react-icons/go";
@@ -8,6 +8,8 @@ const Signin = () => {
   const [signinError, setSigninError]=useState('')
   const [singinSuccesfull, setSinginSuccesfull]=useState('')
   const [showPassword, setShowPassword] = useState(false);
+  const location=useLocation()
+  console.log(location);
   
   //-----------------
 
@@ -30,9 +32,10 @@ const Signin = () => {
     signInUser(email, password)
       .then((result) => {
         console.log(result.user);
-         e.target.reset();
-         navigate("/");
+        // e.target.reset();
+         navigate(location?.state ? location.state : "/");
         setSinginSuccesfull('Succesfully SignIn ')
+        
       })
       .catch((error) => {
         console.error(error.message);
