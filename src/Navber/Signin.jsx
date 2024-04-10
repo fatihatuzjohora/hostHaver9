@@ -1,10 +1,19 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
+import { FiEye } from "react-icons/fi";
+import { GoEyeClosed } from "react-icons/go";
 
 const Signin = () => {
+  const [signinError, setSigninError]=useState('')
+  const [singinSuccesfull, setSinginSuccesfull]=useState('')
+  const [showPassword, setShowPassword] = useState(false);
+  
+  //-----------------
+
   const { signInUser, signInWithGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
+  //-----------------------------
 
   const handleSignIn = (e) => {
     e.preventDefault();
@@ -12,14 +21,22 @@ const Signin = () => {
     const password = e.target.password.value;
     console.log(email, password);
 
+    //-----------------------------------------
+   setSigninError('')
+   setSinginSuccesfull('')
+
+    //--------------------------
+
     signInUser(email, password)
       .then((result) => {
         console.log(result.user);
-        e.target.reset();
-        navigate("/");
+         e.target.reset();
+         navigate("/");
+        setSinginSuccesfull('Succesfully SignIn ')
       })
       .catch((error) => {
         console.error(error.message);
+        setSigninError(error.message)
       });
   };
 
@@ -27,6 +44,8 @@ const Signin = () => {
     signInWithGoogle()
       .then((result) => {
         console.log(result.user);
+        
+        
       })
       .catch((error) => {
         console.error(error.message);
@@ -53,17 +72,24 @@ const Signin = () => {
                   required
                 />
               </div>
-              <div className="form-control">
+              <div className="form-control relative">
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  type="password"
+                 type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder="password"
                   className="input input-bordered"
                   required
                 />
+                <span
+                      className="absolute top-3 right-8 mt-10"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? <GoEyeClosed /> : <FiEye />}
+                    </span>
+                 
                 <label className="label">
                   <a href="#" className="label-text-alt link link-hover">
                     Forgot password?
@@ -114,6 +140,12 @@ const Signin = () => {
                 </button>
               </div>
             </form>
+            {
+              signinError && <p className="text-red-700 text-xl p-4 text-center font-semibold">{signinError}</p>
+            }
+            {
+              singinSuccesfull && <p className="text-green-700 text-xl p-4 text-center font-semibold">{singinSuccesfull}</p>
+            }
 
             <p className="text-center mb-3">
               New Here? Please Register

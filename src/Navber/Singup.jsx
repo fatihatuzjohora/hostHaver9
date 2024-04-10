@@ -1,26 +1,53 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
+import { FiEye } from "react-icons/fi";
+import { GoEyeClosed } from "react-icons/go";
 
 const Singup = () => {
+  const [signupError, setSignupError]=useState('')
+  const [singupSuccesfull, setSingupSuccesfull]=useState('')
+  const [showPassword, setShowPassword] = useState(false);
+//-------------------------------
   const { createUser } = useContext(AuthContext);
   const navigate = useNavigate();
-
+//---------------------------------
   const handleSignUp = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
+    const accepted=e.target.terms.checked
     console.log(name, email, password);
+//-------------------------
+setSignupError('')
+setSingupSuccesfull('')
 
+//--------------------------------
+if (password.length < 6) {
+  setSignupError("password showed be at least 6 characters");
+  return;
+} else if (!/[A-Z]/.test(password)) {
+  setSignupError("your password should have at least one upper case");
+  return;
+} 
+else if (!accepted) {
+  setSignupError("please accept our conditions");
+  return;
+}
+
+
+//-------------------------
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
         e.target.reset();
         navigate("/");
+        setSingupSuccesfull('Created Succesfully SignUp ')
       })
       .catch((error) => {
         console.error(error.message);
+        setSignupError(error.message)
       });
   };
 
@@ -56,23 +83,31 @@ const Singup = () => {
                   required
                 />
               </div>
-              <div className="form-control">
+              <div className="form-control relative">
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
+             
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder="password"
-                  className="input input-bordered"
+                  className="input input-bordered "
                   required
                 />
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
-                </label>
+                 <span
+                      className="absolute top-3 right-8 mt-10"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? <GoEyeClosed /> : <FiEye />}
+                    </span>
               </div>
+              <br />
+              <div className="pl-4 ">
+              <input type="checkbox" name="terms" id="" />
+              <label className="ml-2" htmlFor="terms">Accept Our Terms & Conditions</label>
+              </div>
+              <br />
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Register</button>
               </div>
@@ -116,6 +151,12 @@ const Singup = () => {
                 </button>
               </div>
             </form>
+            {
+              signupError && <p className="text-red-700 text-xl p-4 text-center font-semibold">{signupError}</p>
+            }
+            {
+              singupSuccesfull && <p className="text-green-700 text-xl p-4 text-center font-semibold">{singupSuccesfull}</p>
+            }
 
             <p className="text-center mb-3">
               Already Have Account? Please

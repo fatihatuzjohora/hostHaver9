@@ -19,23 +19,23 @@ const CatagoriDetils = () => {
         <div className="">
           <div>
             <figure>
-              <img className="rounded-xl" src={ditel.image} alt="image" />
+              <img className="rounded-xl w-full" src={ditel.image} alt="image" />
             </figure>
           </div>
-          <div className="">
-            <h2 className="">Catagories: {ditel.estate_title}</h2>
+          <div className="ml-24">
+            <h2 className="text-4xl font-bold mt-5">Catagories: {ditel.estate_title}</h2>
 
-            <p>{ditel.description}</p>
+            <p className="mt-3 text-2xl font-semibold  ">{ditel.description}</p>
 
-            <p className="badge badge-secondary"> {ditel.segment_name}</p>
+            <p className="badge badge-secondary text-2xl p-4 mt-3 "> {ditel.segment_name}</p>
 
-            <h1>price: {ditel.price}</h1>
-            <h1>status: {ditel.status}</h1>
-            <h1>area: {ditel.area}</h1>
-            <h1>location: {ditel.location}</h1>
-            <h1>facilities: {ditel.facilities}</h1>
+            <h1 className="mt-2 text-2xl font-semibold ">price: {ditel.price}</h1>
+            <h1 className="mt-2 text-2xl font-semibold ">status: {ditel.status}</h1>
+            <h1 className="mt-2 text-2xl font-semibold ">area: {ditel.area}</h1>
+            <h1 className="mt-2 text-2xl font-semibold ">location: {ditel.location}</h1>
+            <h1 className="mt-2 text-2xl font-semibold ">facilities: {ditel.facilities}</h1>
 
-            <button className="btn">View Property</button>
+            <button className="btn text-2xl mt-5 bg-slate-500">View Property</button>
           </div>
         </div>
       </div>

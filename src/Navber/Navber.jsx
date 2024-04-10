@@ -78,7 +78,7 @@ console.log(user);
               {links}
             </ul>
           </div>
-          <a className=" text-3xl font-bold">HostHaven</a>
+          <a className=" text-4xl font-bold">HostHaven</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
@@ -86,7 +86,7 @@ console.log(user);
         <div className="navbar-end">
           {user ? (
             <>
-              <span>{user.email}</span>
+             
               <div
                 tabIndex={0}
                 role="button"
