@@ -10,6 +10,7 @@ import Profile from "../Navber/Profile";
 import CatagoriDetils from "../Component/CatagoriDetils";
 import Contact from "../Navber/Contact";
 import About from "../Navber/About";
+import Gallary from "../Navber/Gallary";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <Singup></Singup>,
+      },
+      {
+        path: "/gallary",
+        element: <PrivateRoute><Gallary></Gallary></PrivateRoute>,
       },
       {
         path: "/reservetion",

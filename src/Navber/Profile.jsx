@@ -32,7 +32,17 @@ const Profile = () => {
                 <label className="label">
                   <span className="label-text text-xl font-semibold">Photo</span>
                 </label>
+                
                 <img className="rounded-2xl" src={user?.photoURL} alt="" />
+                <input
+                  type="Photo url"
+                  defaultValue={user?.photoURL
+                  }
+                  name="Photo url"
+                  placeholder="Photo url"
+                  className="mt-5 input input-bordered"
+                  required
+                />
              
               </div>
               <div className="form-control">

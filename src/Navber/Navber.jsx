@@ -24,12 +24,16 @@ const Navber = () => {
       <NavLink className="mr-5" to="/">
         Home
       </NavLink>
+      <NavLink className="mr-5" to="/gallary">
+        Gallary
+      </NavLink>
       <NavLink className="mr-5" to="/contact">
         Contact Us
       </NavLink>
       <NavLink className="mr-5" to="/about">
         About Us
       </NavLink>
+      
       {/* <NavLink className="mr-5" to="/signin">
         Singin
       </NavLink>
@@ -49,7 +53,7 @@ const Navber = () => {
       )}
     </div>
   );
-console.log(user);
+  console.log(user);
   return (
     <div>
       <div className="navbar bg-base-100">
@@ -86,7 +90,6 @@ console.log(user);
         <div className="navbar-end">
           {user ? (
             <>
-             
               <div
                 tabIndex={0}
                 role="button"
