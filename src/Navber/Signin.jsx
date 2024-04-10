@@ -38,7 +38,7 @@ const Signin = () => {
         
       })
       .catch((error) => {
-        console.error(error.message);
+        console.error(error);
         setSigninError(error.message)
       });
   };
@@ -46,6 +46,7 @@ const Signin = () => {
   const handleGooglrSignIn = () => {
     signInWithGoogle()
       .then((result) => {
+        navigate(location?.state ? location.state : "/"); 
         console.log(result.user);
         
         
@@ -61,9 +62,9 @@ const Signin = () => {
         <div className="hero-content flex-col">
           <div className="card shrink-0  w-[600px] shadow-2xl bg-base-100">
             <form onSubmit={handleSignIn} className="card-body">
-              <h1 className="text-center">Sing In!</h1>
+              <h1 className="text-center text-3xl font-bold">Sing In!</h1>
 
-              <div className="form-control">
+              <div className="form-control font-semibold">
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
@@ -75,7 +76,8 @@ const Signin = () => {
                   required
                 />
               </div>
-              <div className="form-control relative">
+
+              <div className="form-control font-semibold relative">
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
@@ -93,14 +95,15 @@ const Signin = () => {
                       {showPassword ? <GoEyeClosed /> : <FiEye />}
                     </span>
                  
-                <label className="label">
+                <label className="label font-semibold">
                   <a href="#" className="label-text-alt link link-hover">
                     Forgot password?
                   </a>
                 </label>
               </div>
+
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
+                <button className="btn  text-2xl font-semibold btn-primary">Login</button>
               </div>
 
               <div className="flex justify-center space-x-4">
@@ -150,10 +153,10 @@ const Signin = () => {
               singinSuccesfull && <p className="text-green-700 text-xl p-4 text-center font-semibold">{singinSuccesfull}</p>
             }
 
-            <p className="text-center mb-3">
+            <p className="text-center text-xl mb-3">
               New Here? Please Register
               <Link to="/signup">
-                <button className="btn btn-link">Sign Up</button>
+                <button className="btn text-xl btn-link">Sign Up</button>
               </Link>
             </p>
           </div>

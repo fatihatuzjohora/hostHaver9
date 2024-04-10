@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
+import Navber from "../Navber/Navber";
+import Footer from "../Footer/Footer";
 
 const Error = () => {
   return (
-    <div>
+    <div className="mt-5">
+    <div className="max-w-7xl mx-auto">
+    <Navber></Navber>
       <section className="flex items-center h-full p-16 dark:bg-gray-50 dark:text-gray-800">
         <div className="container flex flex-col items-center justify-center px-5 mx-auto my-8">
           <div className="max-w-md text-center">
@@ -29,6 +33,9 @@ const Error = () => {
           </div>
         </div>
       </section>
+      
+    </div>
+    <Footer></Footer>
     </div>
   );
 };

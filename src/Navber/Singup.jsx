@@ -27,7 +27,7 @@ setSingupSuccesfull('')
 if (password.length < 6) {
   setSignupError("password showed be at least 6 characters");
   return;
-} else if (!/[A-Z]/.test(password)) {
+} else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/.test(password)) {
   setSignupError("your password should have at least one upper case");
   return;
 } 
@@ -57,9 +57,9 @@ else if (!accepted) {
         <div className="hero-content flex-col">
           <div className="card shrink-0  w-[600px] shadow-2xl bg-base-100">
             <form onSubmit={handleSignUp} className="card-body">
-              <h1 className="text-center">Sing Up!</h1>
+              <h1 className="text-center text-3xl font-bold ">Sing Up!</h1>
 
-              <div className="form-control">
+              <div className="form-control font-semibold">
                 <label className="label">
                   <span className="label-text">Name</span>
                 </label>
@@ -71,7 +71,8 @@ else if (!accepted) {
                   required
                 />
               </div>
-              <div className="form-control">
+
+              <div className="form-control font-semibold">
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
@@ -83,7 +84,8 @@ else if (!accepted) {
                   required
                 />
               </div>
-              <div className="form-control relative">
+
+              <div className="form-control font-semibold relative">
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
@@ -103,13 +105,13 @@ else if (!accepted) {
                     </span>
               </div>
               <br />
-              <div className="pl-4 ">
+              <div className="pl-4 font-semibold">
               <input type="checkbox" name="terms" id="" />
               <label className="ml-2" htmlFor="terms">Accept Our Terms & Conditions</label>
               </div>
               <br />
-              <div className="form-control mt-6">
-                <button className="btn btn-primary">Register</button>
+              <div className="form-control text-2xl font-semibold mt-6">
+                <button className="btn text-2xl font-semibold btn-primary">Register</button>
               </div>
 
               <div className="flex justify-center space-x-4">
@@ -158,10 +160,10 @@ else if (!accepted) {
               singupSuccesfull && <p className="text-green-700 text-xl p-4 text-center font-semibold">{singupSuccesfull}</p>
             }
 
-            <p className="text-center mb-3">
+            <p className="text-center text-xl mb-3">
               Already Have Account? Please
               <Link to="/signin">
-                <button className="btn btn-link">Sign In</button>
+                <button className="btn text-xl btn-link">Sign In</button>
               </Link>
             </p>
           </div>
