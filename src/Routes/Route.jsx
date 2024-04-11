@@ -11,6 +11,7 @@ import CatagoriDetils from "../Component/CatagoriDetils";
 import Contact from "../Navber/Contact";
 import About from "../Navber/About";
 import Gallary from "../Navber/Gallary";
+import UpdatePrifile from "../Navber/UpdatePrifile";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,14 @@ const router = createBrowserRouter([
           <PrivateRoute>
             {" "}
             <Profile></Profile>{" "}
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/updateprofile",
+        element: (
+          <PrivateRoute>
+           <UpdatePrifile></UpdatePrifile>
           </PrivateRoute>
         ),
       },

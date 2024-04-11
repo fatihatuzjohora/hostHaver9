@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
-import UpdatePrifile from "./UpdatePrifile";
+
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
@@ -76,8 +76,6 @@ const Profile = () => {
           </div>
         </div>
       </div>
-
-      <UpdatePrifile></UpdatePrifile>
     </div>
   );
 };

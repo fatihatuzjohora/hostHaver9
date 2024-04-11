@@ -33,18 +33,27 @@ const Navber = () => {
       <NavLink className="mr-5" to="/about">
         About Us
       </NavLink>
-      
+
       {/* <NavLink className="mr-5" to="/signin">
         Singin
       </NavLink>
       <NavLink className="mr-5" to="/signup">
         Signup
       </NavLink> */}
+       
+      
+        
 
       {user && (
         <>
-          <NavLink className="mr-5" to="/profile">
+          <NavLink tabIndex={0} role="button" className="mr-5 dropdown m-1" to="/profile">
             Profile
+            
+  
+  <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow ">
+    <li><NavLink to='/updateprofile'>Update Profile</NavLink></li>
+  </ul>
+
           </NavLink>
           <NavLink className="mr-5" to="/reservetion">
             Reservations
@@ -56,6 +65,8 @@ const Navber = () => {
   console.log(user);
   return (
     <div>
+     
+
       <div className="navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
@@ -90,14 +101,17 @@ const Navber = () => {
         <div className="navbar-end">
           {user ? (
             <>
+              <div className="tooltip tooltip-bottom" data-tip={user.displayName
+}>
               <div
                 tabIndex={0}
                 role="button"
                 className="btn mr-2 btn-ghost btn-circle avatar"
               >
-                <div className="w-10 rounded-full">
+                <div className="w-10 rounded-full ">
                   <img alt="logo" src={user.photoURL} />
                 </div>
+              </div>
               </div>
               <a onClick={handleLogOut} className="btn text-2xl font-semibold">
                 Sign Out
@@ -108,18 +122,22 @@ const Navber = () => {
               <div
                 tabIndex={0}
                 role="button"
-                className="btn mr-2 btn-ghost btn-circle avatar"
+                data-tip="hello"
+                className="btn mr-2 btn-ghost btn-circle avatar tooltip tooltip-top  "
               >
-                <div className="w-10 rounded-full">
+                <div className="w-10 rounded-full ">
                   <img alt="logo" src={logo} />
                 </div>
               </div>
+
               <Link to="/signin">
                 <button className="btn text-2xl font-semibold">Sign In</button>
               </Link>
             </>
           )}
         </div>
+
+
       </div>
     </div>
   );

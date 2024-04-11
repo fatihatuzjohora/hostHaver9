@@ -1,10 +1,12 @@
 
 
 const Reservations = () => {
+
+    
     return (
         <div>
-            <div className="flex flex-col max-w-3xl p-6 space-y-4 sm:p-10 dark:bg-gray-50 dark:text-gray-800">
-	<h2 className="text-xl font-semibold">Your cart</h2>
+            <div className="flex flex-col mt-10 mb-10 p-6 space-y-4 sm:p-10 dark:bg-gray-50 dark:text-gray-800">
+	<h2 className="text-4xl font-bold">Your Choice</h2>
 	<ul className="flex flex-col divide-y dark:divide-gray-300">
 		<li className="flex flex-col py-6 sm:flex-row sm:justify-between">
 			<div className="flex w-full space-x-2 sm:space-x-4">
@@ -12,12 +14,12 @@ const Reservations = () => {
 				<div className="flex flex-col justify-between w-full pb-4">
 					<div className="flex justify-between w-full pb-2 space-x-2">
 						<div className="space-y-1">
-							<h3 className="text-lg font-semibold leading-snug sm:pr-8">Polaroid camera</h3>
-							<p className="text-sm dark:text-gray-600">Classic</p>
+							<h3 className="text-2xl font-semibold leading-snug sm:pr-8">Polaroid camera</h3>
+							<p className="text-xl dark:text-gray-600">Classic</p>
 						</div>
 						<div className="text-right">
-							<p className="text-lg font-semibold">59.99€</p>
-							<p className="text-sm line-through dark:text-gray-400">75.50€</p>
+							<p className="text-2xl font-semibold">59.99€</p>
+							<p className=" line-through dark:text-gray-400">75.50€</p>
 						</div>
 					</div>
 					<div className="flex text-sm divide-x">
@@ -47,12 +49,12 @@ const Reservations = () => {
 				<div className="flex flex-col justify-between w-full pb-4">
 					<div className="flex justify-between w-full pb-2 space-x-2">
 						<div className="space-y-1">
-							<h3 className="text-lg font-semibold leading-snug sm:pr-8">Replica headphones</h3>
-							<p className="text-sm dark:text-gray-600">White</p>
+							<h3 className="text-2xl font-semibold leading-snug sm:pr-8">Replica headphones</h3>
+							<p className="text-xl dark:text-gray-600">White</p>
 						</div>
 						<div className="text-right">
-							<p className="text-lg font-semibold">99.95€</p>
-							<p className="text-sm line-through dark:text-gray-400">150€</p>
+							<p className="text-2xl font-semibold">99.95€</p>
+							<p className="text- line-through dark:text-gray-400">150€</p>
 						</div>
 					</div>
 					<div className="flex text-sm divide-x">
@@ -82,12 +84,12 @@ const Reservations = () => {
 				<div className="flex flex-col justify-between w-full pb-4">
 					<div className="flex justify-between w-full pb-2 space-x-2">
 						<div className="space-y-1">
-							<h3 className="text-lg font-semibold leading-snug sm:pr-8">Set of travel chargers</h3>
-							<p className="text-sm dark:text-gray-600">Black</p>
+							<h3 className="text-2xl font-semibold leading-snug sm:pr-8">Set of travel chargers</h3>
+							<p className="text-xl dark:text-gray-600">Black</p>
 						</div>
 						<div className="text-right">
-							<p className="text-lg font-semibold">8.99€</p>
-							<p className="text-sm line-through dark:text-gray-400">15.99€</p>
+							<p className="text-2xl font-semibold">8.99€</p>
+							<p className="text- line-through dark:text-gray-400">15.99€</p>
 						</div>
 					</div>
 					<div className="flex text-sm divide-x">
@@ -112,11 +114,12 @@ const Reservations = () => {
 			</div>
 		</li>
 	</ul>
+
 	<div className="space-y-1 text-right">
-		<p>Total amount:
-			<span className="font-semibold">357 €</span>
+		<p className="text-2xl font-bold">Total amount:
+			<span className="text-2xl font-bold">357 €</span>
 		</p>
-		<p className="text-sm dark:text-gray-600">Not including taxes and shipping costs</p>
+		<p className="text- dark:text-gray-600">Not including taxes and shipping costs</p>
 	</div>
 	<div className="flex justify-end space-x-4">
 		<button type="button" className="px-6 py-2 border rounded-md dark:border-violet-600">Back
