@@ -40,20 +40,24 @@ const Navber = () => {
       <NavLink className="mr-5" to="/signup">
         Signup
       </NavLink> */}
-       
-      
-        
 
       {user && (
         <>
-          <NavLink tabIndex={0} role="button" className="mr-5 dropdown m-1" to="/profile">
+          <NavLink
+            tabIndex={0}
+            role="button"
+            className="mr-5 dropdown m-1"
+            to="/profile"
+          >
             Profile
-            
-  
-  <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow ">
-    <li><NavLink to='/updateprofile'>Update Profile</NavLink></li>
-  </ul>
-
+            <ul
+              tabIndex={0}
+              className="dropdown-content z-[1] menu p-2 shadow "
+            >
+              <li>
+                <NavLink to="/updateprofile">Update Profile</NavLink>
+              </li>
+            </ul>
           </NavLink>
           <NavLink className="mr-5" to="/reservetion">
             Reservations
@@ -65,8 +69,6 @@ const Navber = () => {
   console.log(user);
   return (
     <div>
-     
-
       <div className="navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
@@ -101,17 +103,19 @@ const Navber = () => {
         <div className="navbar-end">
           {user ? (
             <>
-              <div className="tooltip tooltip-bottom" data-tip={user.displayName
-}>
               <div
-                tabIndex={0}
-                role="button"
-                className="btn mr-2 btn-ghost btn-circle avatar"
+                className="tooltip tooltip-bottom"
+                data-tip={user.displayName}
               >
-                <div className="w-10 rounded-full ">
-                  <img alt="logo" src={user.photoURL} />
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="btn mr-2 btn-ghost btn-circle avatar"
+                >
+                  <div className="w-10 rounded-full ">
+                    <img alt="logo" src={user.photoURL} />
+                  </div>
                 </div>
-              </div>
               </div>
               <a onClick={handleLogOut} className="btn text-2xl font-semibold">
                 Sign Out
@@ -123,7 +127,7 @@ const Navber = () => {
                 tabIndex={0}
                 role="button"
                 data-tip="hello"
-                className="btn mr-2 btn-ghost btn-circle avatar tooltip tooltip-top  "
+                className="btn mr-2 btn-ghost btn-circle avatar  "
               >
                 <div className="w-10 rounded-full ">
                   <img alt="logo" src={logo} />
@@ -136,8 +140,6 @@ const Navber = () => {
             </>
           )}
         </div>
-
-
       </div>
     </div>
   );

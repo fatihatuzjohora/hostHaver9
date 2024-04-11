@@ -26,12 +26,15 @@ const SingleData = ({ data }) => {
           </div>
           <h1 className="text-2xl mt-3 font-semibold">price:{price}</h1>
 
-          <Link to={`/ditels/${id}`}>
+         
+         <Link to={`/ditels/${id}`}>
             <button className="btn bg-slate-600 mt-5 text-2xl text-white">
               View Property
             </button>
           </Link>
-        </div>
+       
+         </div>
+        
       </div>
     </div>
   );

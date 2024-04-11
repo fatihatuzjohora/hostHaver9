@@ -1,6 +1,9 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { useRef } from "react";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 
 const CatagoriDetils = () => {
+  let ref=useRef(0)
+
   const detils = useLoaderData();
   const { id } = useParams();
   const idInt = parseInt(id);
@@ -8,6 +11,14 @@ const CatagoriDetils = () => {
   //console.log(detils, id);
   //console.log(idInt, id);
   //console.log(ditel);
+
+const handleReserve=()=>{
+  ref.current=ref.current +1
+  alert("Reserved Added" +ref.current)
+}
+
+
+
 
   return (
     <div className="mt-5 mb-5">
@@ -35,7 +46,11 @@ const CatagoriDetils = () => {
             <h1 className="mt-2 text-2xl font-semibold ">location: {ditel.location}</h1>
             <h1 className="mt-2 text-2xl font-semibold ">facilities: {ditel.facilities}</h1>
 
-            <button className="btn text-2xl mt-5 bg-slate-500">View Property</button>
+            <Link to={`/reservetion`}>
+            <button onClick={handleReserve} className="btn bg-slate-600 mt-5 text-2xl text-white">
+              Add To Reservetion
+            </button>
+          </Link>
           </div>
         </div>
       </div>
