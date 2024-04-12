@@ -27,15 +27,12 @@ const Signin = () => {
     console.log(email, password);
     console.log(password.length);
 
-    if (email.length !== 0) {
+    if (!email.length) {
       setNewErrot("please type your email");
       return;
     }
 
-    if (!password.length < 6) {
-      setNewErropassword("please type your password");
-      return;
-    }
+   
 
     //-----------------------------------------
     setSigninError("");
@@ -45,7 +42,7 @@ const Signin = () => {
 
     signInUser(email, password)
       .then((result) => {
-        s;
+        
         console.log(result.user);
         // e.target.reset();
         navigate(location?.state ? location.state : "/");
