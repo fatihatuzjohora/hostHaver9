@@ -29,10 +29,19 @@ const AuthProvider = ({ children }) => {
   };
 
   //----------------------
-  const updateUserProfile=()=>{
-   return updateProfile(auth.currentUser, {
+  const updateUserProfile=(name, image, email,)=>{
+    updateProfile(auth.currentUser, {
       displayName: name, photoURL: image
-    })
+    }).then(() => {
+      console.log('succesfull');
+      // Profile updated!
+      // ...
+    }).catch((error) => {
+      console.log(error);
+      // An error occurred
+      // ...
+    });
+    
     
   }
   //--------------------------------

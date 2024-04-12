@@ -9,7 +9,7 @@ AOS.init();
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
-
+console.log(user);
   return (
     <div>
       <div className="hero p-8 mx-auto bg-base-200 mt-5 mb-5 rounded-2xl">

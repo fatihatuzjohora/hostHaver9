@@ -1,4 +1,22 @@
+import { useContext } from "react";
+import { AuthContext } from "../Providers/AuthProvider";
+import { useForm } from "react-hook-form";
+
 const UpdatePrifile = () => {
+  const { user, updateUserProfile } = useContext(AuthContext);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+    updateUserProfile(data.name, data.image);
+  };
+  console.log(user);
+
   return (
     <div>
       <section className="p-6 dark:bg-gray-100 dark:text-gray-900 mt-5 mb-5">
@@ -18,53 +36,56 @@ const UpdatePrifile = () => {
             </div>
 
             <div className=" items-center mt-5">
-              <button className="text-xl text-center btn bg-slate-400 font-semibold">
-                Update Photo
-              </button>
+
+              {/* <label
+                htmlFor="file-upload"
+                className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+              >
+                <span className="text-xl text-center btn bg-slate-400 font-semibold">
+                  Update Photo
+                </span>
+                <input
+                  id="file-upload"
+                  name="file-upload"
+                  type="file"
+                  className="sr-only"
+                />
+              </label> */}
             </div>
           </div>
 
           <div className="font-semibold text-xl">
             <form
-              noValidate=""
-              action=""
+              onSubmit={handleSubmit(onSubmit)}
               className="container flex flex-col  mx-auto space-y-12"
             >
               <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm bg-zinc-200">
                 <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
-                  <div className="col-span-full  sm:col-span-3">
-                    <label htmlFor="firstname" className="">
-                      First name
+                  <div className="form-control col-span-full">
+                    <label className="label ">
+                      <span
+                        
+                        className="label-text text-xl font-semibold"
+                      >
+                        Name
+                      </span>
                     </label>
                     <input
-                      id="firstname"
-                      type="text"
-                      placeholder="First name"
-                      className="w-full rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
+                      {...register("name")}
+                      defaultValue={user.displayName}
+                      className=" w-full rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 dark:border-gray-300"
                     />
                   </div>
-                  <div className="col-span-full sm:col-span-3">
-                    <label htmlFor="lastname" className="">
-                      Last name
-                    </label>
-                    <input
-                      id="lastname"
-                      type="text"
-                      placeholder="Last name"
-                      className="w-full rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
-                    />
-                  </div>
-                  <div className="col-span-full sm:col-span-3">
+                  <div className="col-span-full">
                     <label htmlFor="email" className="">
                       Email
                     </label>
                     <input
-                      id="email"
-                      type="email"
-                      placeholder="Email"
-                      className="w-full rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
+                      {...register("image", { required: true })}
+                      className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 dark:border-gray-300"
                     />
                   </div>
+
                   <div className="col-span-full">
                     <label htmlFor="address" className="">
                       Address
@@ -76,6 +97,7 @@ const UpdatePrifile = () => {
                       className="w-full rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
                     />
                   </div>
+
                   <div className="col-span-full sm:col-span-2">
                     <label htmlFor="city" className="">
                       City
@@ -87,6 +109,7 @@ const UpdatePrifile = () => {
                       className="w-full rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
                     />
                   </div>
+
                   <div className="col-span-full sm:col-span-2">
                     <label htmlFor="state" className="">
                       State
@@ -98,6 +121,7 @@ const UpdatePrifile = () => {
                       className="w-full rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
                     />
                   </div>
+
                   <div className="col-span-full sm:col-span-2">
                     <label htmlFor="zip" className="">
                       ZIP
@@ -109,8 +133,12 @@ const UpdatePrifile = () => {
                       className="w-full rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
                     />
                   </div>
+
                   <div className="w-full h-full col-span-full mt-3 mb-3">
-                    <button className="text-xl w-full h-full font-semibold  btn bg-slate-400">
+                    <button
+                      type="submit"
+                      className="text-xl w-full h-full font-semibold  btn bg-slate-400"
+                    >
                       Update Information{" "}
                     </button>
                   </div>

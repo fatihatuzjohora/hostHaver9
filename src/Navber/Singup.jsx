@@ -28,9 +28,10 @@ setSingupSuccesfull('')
 if (password.length < 6) {
   setSignupError("password showed be at least 6 characters");
   return;
-} else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/.test(password)) {
-  setSignupError("your password should have at least one upper case");
-  return;
+} else if (!/([A-Z])/.test(password)) {
+  setSignupError("your password should have at least one upper, one lower case and must be 6 caractors  ");
+  return; 
+//^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$,,
 } 
 else if (!accepted) {
   setSignupError("please accept our conditions");
