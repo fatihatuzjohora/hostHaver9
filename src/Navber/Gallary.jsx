@@ -1,12 +1,15 @@
 
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
+import { Helmet } from 'react-helmet-async';
 // ..
 AOS.init();
 
 const Gallary = () => {
     return (
         <div className="mt-10 mb-10">
+<Helmet><title>Gallary House</title></Helmet>
+
             <section className="py-6 dark:bg-gray-100 dark:text-gray-900">
 				<h1 className='text-5xl font-bold text-center mb-5'>Gallary House</h1>
 	<div className="container grid grid-cols-2 gap-4 p-4 mx-auto md:grid-cols-4">

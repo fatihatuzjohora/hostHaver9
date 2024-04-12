@@ -3,6 +3,7 @@ import { AuthContext } from "../Providers/AuthProvider";
 
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
+import { Helmet } from "react-helmet-async";
 // ..
 AOS.init();
 
@@ -12,6 +13,7 @@ const Profile = () => {
 console.log(user);
   return (
     <div>
+      <Helmet><title>My Profile</title></Helmet>
       <div className="hero p-8 mx-auto bg-base-200 mt-5 mb-5 rounded-2xl">
         <div className="hero-content flex-col">
           <div className="card shrink-0  w-[900px] shadow-2xl bg-base-100">

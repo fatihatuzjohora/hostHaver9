@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
+import { Helmet } from "react-helmet-async";
 
 const UpdatePrifile = () => {
   const { user, updateUserProfile } = useContext(AuthContext);
@@ -19,6 +20,7 @@ const UpdatePrifile = () => {
 
   return (
     <div>
+      <Helmet><title>Update profile</title></Helmet>
       <section className="p-6 dark:bg-gray-100 dark:text-gray-900 mt-5 mb-5">
         <div className="">
           <p className="text-4xl font-bold text-center">Personal Inormation</p>
