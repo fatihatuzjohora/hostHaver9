@@ -13,7 +13,7 @@ const UpdatePrifile = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    updateUserProfile(data.name, data.image);
+    updateUserProfile(data.name, data.image, data.email);
   };
   console.log(user);
 
@@ -78,10 +78,20 @@ const UpdatePrifile = () => {
                   </div>
                   <div className="col-span-full">
                     <label htmlFor="email" className="">
+                      Photo URL
+                    </label>
+                    <input
+                      {...register("photo")}
+                      className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 dark:border-gray-300"
+                    />
+                  </div>
+                  <div className="col-span-full">
+                    <label htmlFor="email" className="">
                       Email
                     </label>
                     <input
-                      {...register("image", { required: true })}
+                    defaultValue={user.email}
+                      {...register("email")}
                       className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 dark:border-gray-300"
                     />
                   </div>

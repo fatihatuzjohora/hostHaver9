@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 
 const CatagoriDetils = () => {
@@ -22,6 +23,9 @@ const handleReserve=()=>{
 
   return (
     <div className="mt-5 mb-5">
+      <Helmet>
+<title>{ditel?.estate_title}</title>
+      </Helmet>
       <h1 className="font-extrabold text-5xl mx-auto items-center text-center mt-10 mb-10">
         Catagoris Detiles
       </h1>
@@ -30,21 +34,21 @@ const handleReserve=()=>{
         <div className="">
           <div>
             <figure>
-              <img className="rounded-xl w-full" src={ditel.image} alt="image" />
+              <img className="rounded-xl w-full" src={ditel?.image} alt="image" />
             </figure>
           </div>
           <div className="ml-24">
-            <h2 className="text-4xl font-bold mt-5">Catagories: {ditel.estate_title}</h2>
+            <h2 className="text-4xl font-bold mt-5">Catagories: {ditel?.estate_title}</h2>
 
-            <p className="mt-3 text-2xl font-semibold  ">{ditel.description}</p>
+            <p className="mt-3 text-2xl font-semibold  ">{ditel?.description}</p>
 
-            <p className="badge badge-secondary text-2xl p-4 mt-3 "> {ditel.segment_name}</p>
+            <p className="badge badge-secondary text-2xl p-4 mt-3 "> {ditel?.segment_name}</p>
 
-            <h1 className="mt-2 text-2xl font-semibold ">price: {ditel.price}</h1>
-            <h1 className="mt-2 text-2xl font-semibold ">status: {ditel.status}</h1>
-            <h1 className="mt-2 text-2xl font-semibold ">area: {ditel.area}</h1>
-            <h1 className="mt-2 text-2xl font-semibold ">location: {ditel.location}</h1>
-            <h1 className="mt-2 text-2xl font-semibold ">facilities: {ditel.facilities}</h1>
+            <h1 className="mt-2 text-2xl font-semibold ">price: {ditel?.price}</h1>
+            <h1 className="mt-2 text-2xl font-semibold ">status: {ditel?.status}</h1>
+            <h1 className="mt-2 text-2xl font-semibold ">area: {ditel?.area}</h1>
+            <h1 className="mt-2 text-2xl font-semibold ">location: {ditel?.location}</h1>
+            <h1 className="mt-2 text-2xl font-semibold ">facilities: {ditel?.facilities}</h1>
 
             <Link to={`/reservetion`}>
             <button onClick={handleReserve} className="btn bg-slate-600 mt-5 text-2xl text-white">

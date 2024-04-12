@@ -1,11 +1,15 @@
+
 import { Link } from "react-router-dom";
 
 const SingleData = ({ data }) => {
   const { id, image, estate_title, segment_name, status, price, description } =
     data;
 
+    
+
   return (
     <div className=" card bg-base-100 shadow-xl p-6 border ">
+      
       <div className="">
         <div className="">
           <figure>

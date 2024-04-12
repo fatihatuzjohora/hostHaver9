@@ -71,7 +71,7 @@ const router = createBrowserRouter([
       {
         path: "/ditels/:id",
         element: <CatagoriDetils></CatagoriDetils>,
-        loader: () => fetch("Data.json"),
+        loader: () => fetch("/Data.json"),
       },
     ],
   },
