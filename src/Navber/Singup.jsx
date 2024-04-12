@@ -5,12 +5,23 @@ import { FiEye } from "react-icons/fi";
 import { GoEyeClosed } from "react-icons/go";
 import { updateProfile } from "firebase/auth";
 const Singup = () => {
-  const [newError,setNewErrot] =useState("")
+
+  const [nameError, setNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [termsError, settermsError] = useState("");
+
+
+
   const [signupError, setSignupError] = useState("");
+
+
+
   const [singupSuccesfull, setSingupSuccesfull] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   //-------------------------------
-  const { createUser,auth,signInWithGoogle,signInWithGithub } = useContext(AuthContext);
+  const { createUser, auth, signInWithGoogle, signInWithGithub } =
+    useContext(AuthContext);
   const navigate = useNavigate();
   //---------------------------------
   const handleSignUp = (e) => {
@@ -21,45 +32,68 @@ const Singup = () => {
     const photoURL = e.target.photoURL.value;
     const accepted = e.target.terms.checked;
     console.log(name, email, photoURL, password);
-//------------------------
-if (!name.length) {
-  setNewErrot('please type your Name')
-  return;
+    //------------------------
+
+    if(!name){
+      setNameError('Please type your name')
+   return }
+setNameError('')
+
+    if(email.length==0){
+      setEmailError('Please type your email')
+   return }
+setEmailError('')
+
+if(password.length==0){
+setPasswordError('Please type 6 character Password')
+return
 }
-if (!email.length) {
-  setNewErrot('please type your email')
+else if (!/^(?=.*[A-Z])(?=.*[a-z]).{6,}$/.test(password)) {
+  setPasswordError(
+    "your password should have at least one upper, one lower case & must 6charactor "
+  );
+return;
+} 
+setPasswordError('')
+
+if (!accepted) {
+  settermsError("please accept our conditions");
   return;
-}
+} 
+settermsError('')
+
+
+    // if (name.length) {
+    //   setNewErrot('please type your Name')
+    //   return;
+    // }
+    // if (!email.length) {
+    //   setNewErrot('please type your email')
+    //   return;
+    // }
 
     //-------------------------
     setSignupError("");
     setSingupSuccesfull("");
 
-    //--------------------------------
-    if (!/^(?=.*[A-Z])(?=.*[a-z]).{6,}$/.test(password)
-    ) {
-      setSignupError("your password should have at least one upper, one lower case and must be 6 caractors ");
-      
-      return;
-    } else if (!accepted) {
-      setSignupError("please accept our conditions");
-      return;
-    }
+   
+   
 
     //-------------------------
     createUser(email, password)
       .then((result) => {
-
         updateProfile(auth.currentUser, {
-          displayName: name, photoURL: photoURL
-        }).then(() => {
-          // Profile updated!
-          // ...
-        }).catch(() => {
-          // An error occurred
-          // ...
-        });
-
+          displayName: name,
+          photoURL: photoURL,
+        })
+          .then(() => {
+            // Profile updated!
+            // ...
+          })
+          .catch(() => {
+            // An error occurred
+            // ...
+          });
 
         console.log(result.user);
         e.target.reset();
@@ -71,14 +105,12 @@ if (!email.length) {
         setSignupError(error.message);
       });
   };
-//----------------------------
+  //----------------------------
   const handleGooglrSignIn = () => {
     signInWithGoogle()
       .then((result) => {
-        navigate(location?.state ? location.state : "/"); 
+        navigate(location?.state ? location.state : "/");
         console.log(result.user);
-        
-        
       })
       .catch((error) => {
         console.error(error.message);
@@ -89,9 +121,8 @@ if (!email.length) {
   const handleGitHubSignIn = () => {
     signInWithGithub()
       .then((result) => {
-        navigate(location?.state ? location.state : "/"); 
+        navigate(location?.state ? location.state : "/");
         console.log(result.user);
-        
       })
       .catch((error) => {
         console.error(error.message);
@@ -116,8 +147,7 @@ if (!email.length) {
                   name="name"
                   className="input input-bordered"
                 />
-                  <p className="text-red-500">{newError}</p>
-                <h1>{signupError}</h1>
+                 <p className="text-red-500">{nameError}</p>
               </div>
 
               <div className="form-control font-semibold">
@@ -129,9 +159,8 @@ if (!email.length) {
                   name="email"
                   placeholder="email"
                   className="input input-bordered"
-                
                 />
-                 <p className="text-red-500">{newError}</p>
+                <p className="text-red-500">{emailError}</p>
               </div>
 
               <div className="form-control font-semibold">
@@ -143,9 +172,7 @@ if (!email.length) {
                   name="photoURL"
                   placeholder="photoURL"
                   className="input input-bordered"
-                
                 />
-                
               </div>
 
               <div className="form-control font-semibold relative">
@@ -158,9 +185,9 @@ if (!email.length) {
                   name="password"
                   placeholder="password"
                   className="input input-bordered "
-                
                 />
-                
+                 <p className="text-red-500">{passwordError}</p>
+
                 <span
                   className="absolute top-3 right-8 mt-10"
                   onClick={() => setShowPassword(!showPassword)}
@@ -171,10 +198,11 @@ if (!email.length) {
               <br />
 
               <div className="pl-4 font-semibold">
-                <input type="checkbox" name="terms" id="" />
+                <input type="checkbox" name="terms" id="terms" />
                 <label className="ml-2" htmlFor="terms">
                   Accept Our Terms & Conditions
                 </label>
+                <p className="text-red-500">{termsError}</p>
               </div>
               <br />
               <div className="form-control text-2xl font-semibold mt-6">
@@ -185,7 +213,7 @@ if (!email.length) {
 
               <div className="flex justify-center space-x-4">
                 <button
-                 onClick={handleGooglrSignIn}
+                  onClick={handleGooglrSignIn}
                   aria-label="Log in with Google"
                   className="p-3 rounded-sm"
                 >
@@ -199,7 +227,7 @@ if (!email.length) {
                 </button>
 
                 <button
-                 onClick={handleGitHubSignIn}
+                  onClick={handleGitHubSignIn}
                   aria-label="Log in with GitHub"
                   className="p-3 rounded-sm"
                 >

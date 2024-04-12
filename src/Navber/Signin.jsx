@@ -27,16 +27,24 @@ const Signin = () => {
     console.log(email, password);
     console.log(password.length);
 
-    if (!email.length) {
+    if (email.length==0) {
       setNewErrot("please type your email");
+      return; 
+    }
+    setNewErrot('')
+    if (!password.length<6) {
+      setNewErropassword("please type your password");
       return;
     }
+    setNewErropassword('')
 
+    
    
 
     //-----------------------------------------
     setSigninError("");
     setSinginSuccesfull("");
+    
 
     //--------------------------
 
@@ -94,7 +102,7 @@ const Signin = () => {
                   name="email"
                   placeholder="email"
                   className="input input-bordered"
-                  required
+                  
                 />
                 <p className="text-red-500">{newError}</p>
               </div>
@@ -108,7 +116,7 @@ const Signin = () => {
                   name="password"
                   placeholder="password"
                   className="input input-bordered"
-                  required
+                  
                 />
                 <p className="text-red-500">{newErrorpassword}</p>
                 <span
