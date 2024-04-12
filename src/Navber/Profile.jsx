@@ -1,6 +1,11 @@
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
+
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
@@ -16,7 +21,7 @@ const Profile = () => {
               </h1>
               <div className=" grid col-span-1 md:grid-cols-2 gap-5 items-center p-6">
                 <div className=" ">
-                  <img
+                  <img  data-aos='zoom-in' data-aos-duration='1700' 
                     className="rounded-full w-full shadow-lg border  hover:shadow-red-300 "
                     src={user?.photoURL}
                     alt=""
@@ -24,29 +29,29 @@ const Profile = () => {
                 </div>
 
                 <div>
-                  <div className="form-control">
+                  <div  className="form-control">
                     <label className="label">
-                      <span className="label-text text-xl font-semibold">
+                      <span data-aos="fade-left" data-aos-delay='1500'className="label-text text-xl font-semibold">
                         Name
                       </span>
                     </label>
-                    <input
+                    <input data-aos="fade-left" data-aos-delay='2000'
                       type="Name"
                       defaultValue={user?.displayName}
                       placeholder="Name"
                       name="Name"
-                      className="input input-bordered"
+                      className="input input-bordered "
                       required
                     />
                   </div>
 
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text text-xl font-semibold">
+                      <span data-aos="fade-left" data-aos-delay='2200'className="label-text text-xl font-semibold">
                         Photo URL
                       </span>
                     </label>
-                    <input
+                    <input data-aos="fade-left" data-aos-delay='2300'
                       type="Photo url"
                       defaultValue={user?.photoURL}
                       name="Photo url"
@@ -57,11 +62,11 @@ const Profile = () => {
                   </div>
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text text-xl font-semibold">
+                      <span data-aos="fade-left" data-aos-delay='2500'className="label-text text-xl font-semibold">
                         Email
                       </span>
                     </label>
-                    <input
+                    <input data-aos="fade-left" data-aos-delay='2600'
                       type="email"
                       defaultValue={user?.email}
                       name="email"
