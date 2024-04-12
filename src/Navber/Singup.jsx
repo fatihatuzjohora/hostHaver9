@@ -5,12 +5,12 @@ import { FiEye } from "react-icons/fi";
 import { GoEyeClosed } from "react-icons/go";
 import { updateProfile } from "firebase/auth";
 const Singup = () => {
- 
+  const [newError,setNewErrot] =useState("")
   const [signupError, setSignupError] = useState("");
   const [singupSuccesfull, setSingupSuccesfull] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   //-------------------------------
-  const { createUser,auth } = useContext(AuthContext);
+  const { createUser,auth,signInWithGoogle,signInWithGithub } = useContext(AuthContext);
   const navigate = useNavigate();
   //---------------------------------
   const handleSignUp = (e) => {
@@ -21,6 +21,16 @@ const Singup = () => {
     const photoURL = e.target.photoURL.value;
     const accepted = e.target.terms.checked;
     console.log(name, email, photoURL, password);
+//------------------------
+if (!name.length) {
+  setNewErrot('please type your Name')
+  return;
+}
+if (!email.length) {
+  setNewErrot('please type your email')
+  return;
+}
+
     //-------------------------
     setSignupError("");
     setSingupSuccesfull("");
@@ -61,6 +71,32 @@ const Singup = () => {
         setSignupError(error.message);
       });
   };
+//----------------------------
+  const handleGooglrSignIn = () => {
+    signInWithGoogle()
+      .then((result) => {
+        navigate(location?.state ? location.state : "/"); 
+        console.log(result.user);
+        
+        
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
+  };
+
+  //-----------------------------------
+  const handleGitHubSignIn = () => {
+    signInWithGithub()
+      .then((result) => {
+        navigate(location?.state ? location.state : "/"); 
+        console.log(result.user);
+        
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
+  };
 
   return (
     <div>
@@ -79,8 +115,8 @@ const Singup = () => {
                   placeholder="Name"
                   name="name"
                   className="input input-bordered"
-                  required
                 />
+                  <p className="text-red-500">{newError}</p>
                 <h1>{signupError}</h1>
               </div>
 
@@ -93,8 +129,9 @@ const Singup = () => {
                   name="email"
                   placeholder="email"
                   className="input input-bordered"
-                  required
+                
                 />
+                 <p className="text-red-500">{newError}</p>
               </div>
 
               <div className="form-control font-semibold">
@@ -106,8 +143,9 @@ const Singup = () => {
                   name="photoURL"
                   placeholder="photoURL"
                   className="input input-bordered"
-                  required
+                
                 />
+                
               </div>
 
               <div className="form-control font-semibold relative">
@@ -120,8 +158,9 @@ const Singup = () => {
                   name="password"
                   placeholder="password"
                   className="input input-bordered "
-                  required
+                
                 />
+                
                 <span
                   className="absolute top-3 right-8 mt-10"
                   onClick={() => setShowPassword(!showPassword)}
@@ -146,6 +185,7 @@ const Singup = () => {
 
               <div className="flex justify-center space-x-4">
                 <button
+                 onClick={handleGooglrSignIn}
                   aria-label="Log in with Google"
                   className="p-3 rounded-sm"
                 >
@@ -159,6 +199,7 @@ const Singup = () => {
                 </button>
 
                 <button
+                 onClick={handleGitHubSignIn}
                   aria-label="Log in with GitHub"
                   className="p-3 rounded-sm"
                 >
