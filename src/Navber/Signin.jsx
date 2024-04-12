@@ -8,6 +8,7 @@ const Signin = () => {
   const [signinError, setSigninError]=useState('')
   const [singinSuccesfull, setSinginSuccesfull]=useState('')
   const [showPassword, setShowPassword] = useState(false);
+  const [newError,setNewErrot] =useState("")
   const location=useLocation()
   console.log(location);
   
@@ -22,7 +23,10 @@ const Signin = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     console.log(email, password);
-
+if (!email.length) {
+  setNewErrot('bucchern')
+  return;
+}
     //-----------------------------------------
    setSigninError('')
    setSinginSuccesfull('')
@@ -86,8 +90,8 @@ const Signin = () => {
                   name="email"
                   placeholder="email"
                   className="input input-bordered"
-                  required
-                />
+                  />
+                  <p className="text-red-500">{newError}</p>
               </div>
 
               <div className="form-control font-semibold relative">

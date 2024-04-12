@@ -3,13 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { FiEye } from "react-icons/fi";
 import { GoEyeClosed } from "react-icons/go";
-
+import { updateProfile } from "firebase/auth";
 const Singup = () => {
+ 
   const [signupError, setSignupError] = useState("");
   const [singupSuccesfull, setSingupSuccesfull] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   //-------------------------------
-  const { createUser } = useContext(AuthContext);
+  const { createUser,auth } = useContext(AuthContext);
   const navigate = useNavigate();
   //---------------------------------
   const handleSignUp = (e) => {
@@ -38,6 +39,18 @@ const Singup = () => {
     //-------------------------
     createUser(email, password)
       .then((result) => {
+
+        updateProfile(auth.currentUser, {
+          displayName: name, photoURL: photoURL
+        }).then(() => {
+          // Profile updated!
+          // ...
+        }).catch(() => {
+          // An error occurred
+          // ...
+        });
+
+
         console.log(result.user);
         e.target.reset();
         navigate("/");
@@ -64,10 +77,11 @@ const Singup = () => {
                 <input
                   type="Name"
                   placeholder="Name"
-                  name="Name"
+                  name="name"
                   className="input input-bordered"
                   required
                 />
+                <h1>{signupError}</h1>
               </div>
 
               <div className="form-control font-semibold">

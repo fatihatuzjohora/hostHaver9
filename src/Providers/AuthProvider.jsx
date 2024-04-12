@@ -30,17 +30,9 @@ const AuthProvider = ({ children }) => {
 
   //----------------------
   const updateUserProfile=(name, image,)=>{
-    updateProfile(user,  {
+    return updateProfile(user,  {
       displayName: name, photoURL: image
-    }).then(() => {
-      console.log('succesfull');
-      // Profile updated!
-      // ...
-    }).catch((error) => {
-      console.log(error);
-      // An error occurred
-      // ...
-    });
+    })
     
     
   }
@@ -83,12 +75,14 @@ const AuthProvider = ({ children }) => {
   const authInFo = {
     user,
     loading,
+    setUser,
     createUser,
     signInUser,
     logOut,
     signInWithGoogle,
     signInWithGithub,
     updateUserProfile,
+    auth
   };
 
   return (
