@@ -1,10 +1,14 @@
 import { CiCircleCheck } from "react-icons/ci";
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
 
 const Packeg = () => {
   return (
     <div className="mt-10 mb-5">
       <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 rounded-lg dark:bg-gray-100 dark:text-gray-800">
-        <div className=" mb-10">
+        <div data-aos="zoom-in-left"  className=" mb-10">
           <h1 className="font-extrabold text-5xl mx-auto items-center text-center mb-3 ">
             See Our Packages
           </h1>
@@ -16,7 +20,7 @@ const Packeg = () => {
         </div>
 
         <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
-          <div className=" card bg-base-100 shadow-xl p-4 border ">
+          <div data-aos="flip-down" data-aos-duration='1500' className=" card bg-base-100 shadow-xl p-4 border ">
             <div className="">
               <div className="bg-green-200 h-[200px] rounded-xl text-center items-center md:p-8 ">
                 <p className="mt-5 font-bold text-sky-400 ">
@@ -48,7 +52,7 @@ const Packeg = () => {
             </div>
           </div>
 
-          <div className=" card bg-base-100 shadow-xl p-4 border ">
+          <div data-aos="flip-down" data-aos-delay='1500' className=" card bg-base-100 shadow-xl p-4 border ">
             <div className="">
               <div className="bg-green-100 h-[200px] rounded-xl text-center items-center md:p-8">
                 <p className="mt-5 font-bold text-green-500 ">
@@ -80,7 +84,7 @@ const Packeg = () => {
             </div>
           </div>
 
-          <div className=" card bg-base-100 shadow-xl p-4 border ">
+          <div data-aos="flip-down" data-aos-delay='2000' className=" card bg-base-100 shadow-xl p-4 border ">
             <div className="">
               <div className="bg-pink-100 h-[200px] rounded-xl text-center items-center md:p-8">
                 <p className="mt-5 font-bold text-pink-500 ">

@@ -1,5 +1,11 @@
 
 import { Link } from "react-router-dom";
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
+
+import 'animate.css';
 
 const SingleData = ({ data }) => {
   const { id, image, estate_title, segment_name, status, price, description } =
@@ -13,7 +19,7 @@ const SingleData = ({ data }) => {
       <div className="">
         <div className="">
           <figure>
-            <img className="rounded-xl w-full" src={image} alt="image" />
+            <img data-aos="zoom-in-down" data-aos-duration='1700' className="rounded-xl w-full" src={image} alt="image" />
           </figure>
         </div>
         <div className="">
@@ -32,7 +38,7 @@ const SingleData = ({ data }) => {
 
          
          <Link to={`/ditels/${id}`}>
-            <button className="btn bg-slate-600 mt-5 text-2xl text-white">
+            <button className="btn animate__animated animate__bounce bg-slate-600 mt-5 text-2xl text-white">
               View Property
             </button>
           </Link>

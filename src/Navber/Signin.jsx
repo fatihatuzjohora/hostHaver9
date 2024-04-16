@@ -87,9 +87,9 @@ const Signin = () => {
 
   return (
     <div>
-      <div className="hero min-h-[700px] w-[800px] mx-auto bg-base-200 mt-5 mb-5 rounded-2xl">
+      <div className="hero lg:min-h-[700px] lg:w-[800px] md:min-h-[700px] md:w-[800px] mx-auto bg-base-200 mt-5 mb-5 md:rounded-2xl">
         <div className="hero-content flex-col">
-          <div className="card shrink-0  w-[600px] shadow-2xl bg-base-100">
+          <div className="card shrink-0  md:w-[600px] lg:w-[600px] shadow-2xl bg-base-100">
             <form onSubmit={handleSignIn} className="card-body">
               <h1 className="text-center text-3xl font-bold">Sing In!</h1>
 
@@ -184,7 +184,7 @@ const Signin = () => {
               </p>
             )}
 
-            <p className="text-center text-xl mb-3">
+            <p className="text-center text-xl p-4 mb-3">
               New Here? Please Register
               <Link to="/signup">
                 <button className="btn text-xl btn-link">Sign Up</button>

@@ -1,4 +1,8 @@
 
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
 
 const Reviews = () => {
     return (
@@ -9,7 +13,7 @@ const Reviews = () => {
 	</div>
     
 	<div className="container flex flex-col items-center justify-center mx-auto lg:flex-row lg:flex-wrap lg:justify-evenly lg:px-10">
-		<div className="flex flex-col max-w-sm mx-4 my-6 shadow-lg">
+		<div data-aos="flip-left" data-aos-duration='1000' className="flex flex-col max-w-sm mx-4 my-6 shadow-lg">
 			<div className="px-4 py-12 rounded-t-lg sm:px-8 md:px-12 dark:bg-gray-50">
 				<p className="relative px-6 py-1 text-lg italic text-center dark:text-gray-800">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="w-8 h-8 dark:text-violet-400">
@@ -29,7 +33,8 @@ const Reviews = () => {
 				<p className="text uppercase">CEO OF Zapple</p>
 			</div>
 		</div>
-		<div className="flex flex-col max-w-sm mx-4 my-6 shadow-lg">
+
+		<div data-aos="flip-left" data-aos-delay='1000' className="flex flex-col max-w-sm mx-4 my-6 shadow-lg">
 			<div className="px-4 py-12 rounded-t-lg sm:px-8 md:px-12 dark:bg-gray-50">
 				<p className="relative px-6 py-1 text-lg italic text-center dark:text-gray-800">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="w-8 h-8 dark:text-violet-400">
@@ -49,7 +54,8 @@ const Reviews = () => {
 				<p className=" uppercase">CEO of OZANTA</p>
 			</div>
 		</div>
-		<div className="flex flex-col max-w-sm mx-4 my-6 shadow-lg">
+
+		<div data-aos="flip-left" data-aos-delay='1500' className="flex flex-col max-w-sm mx-4 my-6 shadow-lg">
 			<div className="px-4 py-12 rounded-t-lg sm:px-8 md:px-12 dark:bg-gray-50">
 				<p className="relative px-6 py-1 text-lg italic text-center dark:text-gray-800">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="w-8 h-8 dark:text-violet-400">
@@ -68,7 +74,8 @@ const Reviews = () => {
 				<p className="text-sm uppercase">CEO Of Oppo</p>
 			</div>
 		</div>
-		<div className="flex flex-col max-w-sm mx-4 my-6 shadow-lg">
+
+		<div data-aos="flip-left" data-aos-delay='2000' className="flex flex-col max-w-sm mx-4 my-6 shadow-lg">
 			<div className="px-4 py-12 rounded-t-lg sm:px-8 md:px-12 dark:bg-gray-50">
 				<p className="relative px-6 py-1 text-lg italic text-center dark:text-gray-800">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="w-8 h-8 dark:text-violet-400">

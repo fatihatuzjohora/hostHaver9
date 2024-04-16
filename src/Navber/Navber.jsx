@@ -2,6 +2,10 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import logo from "../../src/assets/logo.jpg";
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
 
 const Navber = () => {
   //--------------------
@@ -70,7 +74,7 @@ const Navber = () => {
   return (
     <div>
       <div className="navbar bg-base-100">
-        <div className="navbar-start">
+        <div data-aos="zoom-in-left" data-aos-duration='1200' className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
@@ -95,12 +99,12 @@ const Navber = () => {
               {links}
             </ul>
           </div>
-          <a className=" text-4xl font-bold">HostHaven</a>
+          <a className=" md:text-4xl lg:text-4xl text-2xl font-bold">HostHaven</a>
         </div>
-        <div className="navbar-center hidden lg:flex">
+        <div data-aos="zoom-in-right" data-aos-duration='1300' className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
-        <div className="navbar-end">
+        <div data-aos="zoom-in-left" data-aos-duration='1400' className="navbar-end">
           {user ? (
             <>
               <div

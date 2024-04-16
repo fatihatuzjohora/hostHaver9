@@ -1,7 +1,7 @@
 const Banar = () => {
   return (
     <div>
-      <div className="carousel h-[600px] rounded-2xl  mt-5 mb-5">
+      <div data-aos="fade-up-left" data-aos-duration='1700' className="carousel h-[600px] rounded-2xl  mt-5 mb-5">
         <div id="slide1" className="carousel-item relative w-full">
           <img
             src="https://i.ibb.co/thGCMkF/vote-set-on-ski-in-ski-out-lodge-planned-for-blue-mountain-34e247e6ae19cfec.jpg"
