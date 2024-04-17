@@ -73,7 +73,7 @@ const Signin = () => {
         Swal.fire({
               icon: "error",
              title: "Oops...",
-              text: "please type your right password",
+              text: error.message,
             });
         setSigninError(error.message);
       });
