@@ -24,7 +24,7 @@ const Navber = () => {
 
   //------------------------
   const links = (
-    <div className="text-xl font-semibold mt-5">
+    <div className="text-xl flex md:flex-row flex-col font-semibold mt-5" >
       <NavLink className="mr-5" to="/">
         Home
       </NavLink>
@@ -72,10 +72,10 @@ const Navber = () => {
   );
   console.log(user);
   return (
-    <div>
+    <div className="sticky z-10">
       <div className="navbar bg-base-100">
         <div data-aos="zoom-in-left" data-aos-duration='1200' className="navbar-start">
-          <div className="dropdown">
+          <div className="dropdown ">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -94,7 +94,7 @@ const Navber = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-10 p-2 shadow bg-base-100 rounded-box w-52"
             >
               {links}
             </ul>

@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { FiEye } from "react-icons/fi";
 import { GoEyeClosed } from "react-icons/go";
+import Swal from "sweetalert2";
 
 const Signin = () => {
   const [signinError, setSigninError] = useState("");
@@ -28,15 +29,21 @@ const Signin = () => {
     console.log(password.length);
 
     if (email.length==0) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "please type your email",
+      });
       setNewErrot("please type your email");
       return; 
     }
     setNewErrot('')
-    if (!password.length<6) {
-      setNewErropassword("please type your password");
-      return;
-    }
-    setNewErropassword('')
+    // if (!password.length<6) {
+    //   
+    //   setNewErropassword("please type your password");
+    //   return;
+    // }
+    // setNewErropassword('')
 
     
    
@@ -53,11 +60,21 @@ const Signin = () => {
         
         console.log(result.user);
         // e.target.reset();
+        Swal.fire({
+          title: "signIn Successfull",
+          text: "User Succesfully SignIn",
+          icon: "success"
+        });
         navigate(location?.state ? location.state : "/");
         setSinginSuccesfull("Succesfully SignIn ");
       })
       .catch((error) => {
         console.error(error);
+        Swal.fire({
+              icon: "error",
+             title: "Oops...",
+              text: "please type your right password",
+            });
         setSigninError(error.message);
       });
   };
@@ -92,7 +109,6 @@ const Signin = () => {
           <div className="card shrink-0  md:w-[600px] lg:w-[600px] shadow-2xl bg-base-100">
             <form onSubmit={handleSignIn} className="card-body">
               <h1 className="text-center text-3xl font-bold">Sing In!</h1>
-
               <div className="form-control font-semibold">
                 <label className="label">
                   <span className="label-text">Email</span>

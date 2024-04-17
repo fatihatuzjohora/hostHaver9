@@ -4,18 +4,15 @@ import { AuthContext } from "../Providers/AuthProvider";
 import { FiEye } from "react-icons/fi";
 import { GoEyeClosed } from "react-icons/go";
 import { updateProfile } from "firebase/auth";
-const Singup = () => {
+import Swal from "sweetalert2";
 
+const Singup = () => {
   const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [termsError, settermsError] = useState("");
 
-
-
   const [signupError, setSignupError] = useState("");
-
-
 
   const [singupSuccesfull, setSingupSuccesfull] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -34,50 +31,65 @@ const Singup = () => {
     console.log(name, email, photoURL, password);
     //------------------------
 
-    if(!name){
-      setNameError('Please type your name')
-   return }
-setNameError('')
+    if (!name) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please type your name",
+      });
+      setNameError("Please type your name");
+      return;
+    }
+    setNameError("");
 
-    if(email.length==0){
-      setEmailError('Please type your email')
-   return }
-setEmailError('')
+    if (email.length == 0) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please type your email",
+      });
+      setEmailError("Please type your email");
+      return;
+    }
+    setEmailError("");
 
-if(password.length==0){
-setPasswordError('Please type 6 character Password')
-return
-}
-else if (!/^(?=.*[A-Z])(?=.*[a-z]).{6,}$/.test(password)) {
-  setPasswordError(
-    "your password should have at least one upper, one lower case & must 6charactor "
-  );
-return;
-} 
-setPasswordError('')
+    if (password.length == 0) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please type 6 character Password",
+      });
+      setPasswordError("Please type 6 character Password");
+      return;
+    } else if (!/^(?=.*[A-Z])(?=.*[a-z]).{6,}$/.test(password)) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "your password should have at least one upper, one lower case & must 6charactor ",
+      });
+      setPasswordError(
+        "your password should have at least one upper, one lower case & must 6charactor "
+      );
+      return;
+    }
+    setPasswordError("");
 
-if (!accepted) {
-  settermsError("please accept our conditions");
-  return;
-} 
-settermsError('')
+    if (!accepted) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "please accept our conditions",
+      });
+      settermsError("please accept our conditions");
+      return;
+    }
+    settermsError("");
 
-
-    // if (name.length) {
-    //   setNewErrot('please type your Name')
-    //   return;
-    // }
-    // if (!email.length) {
-    //   setNewErrot('please type your email')
-    //   return;
-    // }
+   
 
     //-------------------------
     setSignupError("");
     setSingupSuccesfull("");
-
-   
-   
 
     //-------------------------
     createUser(email, password)
@@ -97,12 +109,23 @@ settermsError('')
 
         console.log(result.user);
         e.target.reset();
+        Swal.fire({
+          title: "signUp Successfull",
+          text: "Created Succesfully SignUp",
+          icon: "success"
+        });
         navigate("/");
-        setSingupSuccesfull("Created Succesfully SignUp ");
+       
+        
       })
       .catch((error) => {
         console.error(error.message);
-        setSignupError(error.message);
+       
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Email Already In Use",
+        });
       });
   };
   //----------------------------
@@ -136,7 +159,6 @@ settermsError('')
           <div className="card shrink-0  md:w-[600px] lg:w-[600px]  shadow-2xl bg-base-100">
             <form onSubmit={handleSignUp} className="card-body">
               <h1 className="text-center text-3xl font-bold ">Sing Up!</h1>
-
               <div className="form-control font-semibold">
                 <label className="label">
                   <span className="label-text">Name</span>
@@ -147,7 +169,7 @@ settermsError('')
                   name="name"
                   className="input input-bordered"
                 />
-                 <p className="text-red-500">{nameError}</p>
+                <p className="text-red-500">{nameError}</p>
               </div>
 
               <div className="form-control font-semibold">
@@ -161,6 +183,7 @@ settermsError('')
                   className="input input-bordered"
                 />
                 <p className="text-red-500">{emailError}</p>
+          
               </div>
 
               <div className="form-control font-semibold">
@@ -186,7 +209,7 @@ settermsError('')
                   placeholder="password"
                   className="input input-bordered "
                 />
-                 <p className="text-red-500">{passwordError}</p>
+                <p className="text-red-500">{passwordError}</p>
 
                 <span
                   className="absolute top-3 right-8 mt-10"

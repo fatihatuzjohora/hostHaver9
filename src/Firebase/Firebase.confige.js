@@ -15,6 +15,7 @@ import { getAuth } from "firebase/auth";
 //   appId: import.meta.env.VITE_APPID,
 // };
 
+
 const firebaseConfig = {
   apiKey: "AIzaSyCHZdyihzAaLA8NkxzgNJa-z9jYFNGXmLI",
   authDomain: "another-form-details.firebaseapp.com",
